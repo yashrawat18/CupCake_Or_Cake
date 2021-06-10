@@ -51,6 +51,7 @@ public class CupCakeOrCake{
 		  System.out.println("___________________________________________________");		  
 		  System.out.println("		 "+itemOrder +"	  	 "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
+		  System.out.println("  Total:			$"+billAmount);
 		  
     }
     else if(itemOrder.equalsIgnoreCase("CupCakes"))
@@ -67,6 +68,7 @@ public class CupCakeOrCake{
 		  System.out.println("___________________________________________________");		  
 		  System.out.println("		"+itemOrder +"	  "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
+		  System.out.println("  Total:			 $"+billAmount);
 		  
     }
     else
@@ -86,6 +88,7 @@ public class CupCakeOrCake{
       System.out.println("		 Cake             "+cakeQuantity);
       System.out.println("	    Set of CupCakes       "+cupCakesQuantity);
       System.out.println("---------------------------------------------------");
+      System.out.println("  Total:			 $"+billAmount);
 		  
     }
     
