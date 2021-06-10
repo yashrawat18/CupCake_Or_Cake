@@ -31,7 +31,7 @@ public class CupCakeOrCake{
     name = inputData.nextLine();
 
     System.out.println("Hello "+ name + ", please see our Menu below to place your order: ");
-    
+    do{
     orderMenu();
 		
     System.out.print("To order both items please enter \"Both\"");
@@ -52,6 +52,11 @@ public class CupCakeOrCake{
 		  System.out.println("		 "+itemOrder +"	  	 "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
 		  System.out.println("  Total:			$"+billAmount);
+		  System.out.println("Thank you for placing the order!");
+      System.out.println("Your order will arrive in 5 mins");
+      System.out.println();
+      System.out.println("Do you want to place another order(y/n)");
+      ch = inputData.nextLine().charAt(0);
 		  
     }
     else if(itemOrder.equalsIgnoreCase("CupCakes"))
@@ -69,9 +74,15 @@ public class CupCakeOrCake{
 		  System.out.println("		"+itemOrder +"	  "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
 		  System.out.println("  Total:			 $"+billAmount);
+		  System.out.println("Thank you for placing the order!");
+      System.out.println("Your order will arrive in 5 mins");
+      System.out.println();
+      System.out.println("Do you want to place another order(y/n)");
+      ch = inputData.nextLine().charAt(0);
+		  
 		  
     }
-    else
+    else if(itemOrder.equalsIgnoreCase("Both"))
     {
     	System.out.println("Please tell us the Quantity for Cake:");    	
     	int cakeQuantity = Integer.parseInt(inputData.nextLine());
@@ -89,8 +100,23 @@ public class CupCakeOrCake{
       System.out.println("	    Set of CupCakes       "+cupCakesQuantity);
       System.out.println("---------------------------------------------------");
       System.out.println("  Total:			 $"+billAmount);
+      System.out.println("Thank you for placing the order!");
+      System.out.println("Your order will arrive in 5 mins");
+      System.out.println();
+      System.out.println("Do you want to place another order(y/n)");
+      ch = inputData.nextLine().charAt(0);
 		  
     }
+    else
+    {
+    	System.out.println("INVALID CHOICE");
+    	System.out.println("Please enter a VALID choice");
+    	
+    }
+    
+    
+    }while(ch!='n');
+    
     
     
   }
