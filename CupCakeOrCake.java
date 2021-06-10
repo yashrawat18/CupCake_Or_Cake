@@ -41,6 +41,7 @@ public class CupCakeOrCake{
     {
     	System.out.println("Please tell us the Quantity:");
     	itemQuantity = Integer.parseInt(inputData.nextLine());
+    	if(itemQuantity!=0){
     	addOns();
     	calculateAmount(itemOrder,itemQuantity);
     	    	
@@ -53,16 +54,20 @@ public class CupCakeOrCake{
 		  System.out.println("---------------------------------------------------");
 		  System.out.println("  Total:			$"+billAmount);
 		  System.out.println("Thank you for placing the order!");
-      System.out.println("Your order will arrive in 5 mins");
+      System.out.println("Your order will arrive in 5 mins.");
       System.out.println();
       System.out.println("Do you want to place another order(y/n)");
       ch = inputData.nextLine().charAt(0);
-		  
+		  }
+		  else{
+		  	System.out.println("Please enter a VALID Quantity");
+		  }
     }
     else if(itemOrder.equalsIgnoreCase("CupCakes"))
     {
     	System.out.println("Please tell us the Quantity:");
     	itemQuantity = Integer.parseInt(inputData.nextLine());
+    	if(itemQuantity!=0){
     	addOns();
     	calculateAmount(itemOrder,itemQuantity);
     	
@@ -75,11 +80,13 @@ public class CupCakeOrCake{
 		  System.out.println("---------------------------------------------------");
 		  System.out.println("  Total:			 $"+billAmount);
 		  System.out.println("Thank you for placing the order!");
-      System.out.println("Your order will arrive in 5 mins");
+      System.out.println("Your order will arrive in 5 mins.");
       System.out.println();
       System.out.println("Do you want to place another order(y/n)");
       ch = inputData.nextLine().charAt(0);
-		  
+		  }else{
+		  	System.out.println("Please enter a VALID Quantity");
+		  }
 		  
     }
     else if(itemOrder.equalsIgnoreCase("Both"))
@@ -88,6 +95,7 @@ public class CupCakeOrCake{
     	int cakeQuantity = Integer.parseInt(inputData.nextLine());
     	System.out.println("Please tell us the Quantity for Set of CupCakes:");
     	int cupCakesQuantity = Integer.parseInt(inputData.nextLine());
+    	if(cakeQuantity!=0 || cupCakesQuantity!=0){
     	addOns();
     	calculateAmountBoth(cakeQuantity,cupCakesQuantity);
     	
@@ -101,16 +109,19 @@ public class CupCakeOrCake{
       System.out.println("---------------------------------------------------");
       System.out.println("  Total:			 $"+billAmount);
       System.out.println("Thank you for placing the order!");
-      System.out.println("Your order will arrive in 5 mins");
+      System.out.println("Your order will arrive in 5 mins.");
       System.out.println();
       System.out.println("Do you want to place another order(y/n)");
       ch = inputData.nextLine().charAt(0);
-		  
+		  }
+		  else{
+		  	System.out.println("Please enter a VALID Quantity");
+		  }
     }
     else
     {
     	System.out.println("INVALID CHOICE");
-    	System.out.println("Please enter a VALID choice");
+    	System.out.println("Please enter a VALID choice.");
     	
     }
     
