@@ -21,19 +21,23 @@ public class CupCakeOrCake{
 
 	public static void main(String[] args)
   {
-
+    System.out.println();
+    System.out.println();
     System.out.println("Welcome to Cake and CupCake shop!");
     System.out.println("We make custom with our secret cake batter!");
 
    
-   
+    System.out.println();
+    System.out.println();
     System.out.println("Please tell your name:");
     name = inputData.nextLine();
-
+    System.out.println();
+    System.out.println();
     System.out.println("Hello "+ name + ", please see our Menu below to place your order: ");
     do{
     orderMenu();
-		
+		System.out.println();
+    System.out.println();
     System.out.print("To order both items please enter \"Both\"");
     System.out.println();
     itemOrder =inputData.nextLine();
@@ -53,6 +57,7 @@ public class CupCakeOrCake{
 		  System.out.println("		 "+itemOrder +"	  	 "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
 		  System.out.println("  Total:			$"+billAmount);
+      System.out.println();
 		  System.out.println("Thank you for placing the order!");
       System.out.println("Your order will arrive in 5 mins.");
       System.out.println();
@@ -70,7 +75,8 @@ public class CupCakeOrCake{
     	if(itemQuantity!=0){
     	addOns();
     	calculateAmount(itemOrder,itemQuantity);
-    	
+    	System.out.println();
+      System.out.println();
     	System.out.println("");
 		  System.out.println("-----------------Your Order Summary:---------------");
 		  System.out.println("___________________________________________________");
@@ -79,6 +85,7 @@ public class CupCakeOrCake{
 		  System.out.println("		"+itemOrder +"	  "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
 		  System.out.println("  Total:			 $"+billAmount);
+      System.out.println();
 		  System.out.println("Thank you for placing the order!");
       System.out.println("Your order will arrive in 5 mins.");
       System.out.println();
@@ -91,14 +98,15 @@ public class CupCakeOrCake{
     }
     else if(itemOrder.equalsIgnoreCase("Both"))
     {
-    	System.out.println("Please tell us the Quantity for Cake:");    	
+    	System.out.println("Please tell us the Quantity for the Cake:");    	
     	int cakeQuantity = Integer.parseInt(inputData.nextLine());
-    	System.out.println("Please tell us the Quantity for Set of CupCakes:");
+    	System.out.println("Please tell us the Quantity for the Set of CupCakes:");
     	int cupCakesQuantity = Integer.parseInt(inputData.nextLine());
     	if(cakeQuantity!=0 || cupCakesQuantity!=0){
     	addOns();
     	calculateAmountBoth(cakeQuantity,cupCakesQuantity);
-    	
+    	System.out.println();
+      System.out.println();
     	System.out.println("");
 		  System.out.println("-----------------Your Order Summary:---------------");
 		  System.out.println("___________________________________________________");
@@ -108,6 +116,7 @@ public class CupCakeOrCake{
       System.out.println("	    Set of CupCakes       "+cupCakesQuantity);
       System.out.println("---------------------------------------------------");
       System.out.println("  Total:			 $"+billAmount);
+      System.out.println();
       System.out.println("Thank you for placing the order!");
       System.out.println("Your order will arrive in 5 mins.");
       System.out.println();
@@ -115,11 +124,15 @@ public class CupCakeOrCake{
       ch = inputData.nextLine().charAt(0);
 		  }
 		  else{
+        System.out.println();
+        System.out.println();
 		  	System.out.println("Please enter a VALID Quantity");
 		  }
     }
     else
     {
+      System.out.println();
+      System.out.println();
     	System.out.println("INVALID CHOICE");
     	System.out.println("Please enter a VALID choice.");
     	
@@ -135,6 +148,8 @@ public class CupCakeOrCake{
   {
   	
 		do{
+    System.out.println();
+    System.out.println();
     System.out.println("__________________________________________________");
     System.out.println("S.No    Items       Quantity    BASE COST");
     System.out.println("__________________________________________________");
@@ -152,9 +167,11 @@ public class CupCakeOrCake{
   }
   private static void addOns()
   {
+    System.out.println();
+    System.out.println();
   	System.out.println("Please choose Frostings(vanila,chocolate,strawberry,coco)");
     frostingType = inputData.nextLine();
-    System.out.println("Please choose Fillings(mocho,mint,lemon,caramel,vanilla)"); 
+    System.out.println("Please choose Fillings(mocha,mint,lemon,caramel,vanilla)"); 
     fillingType = inputData.nextLine();
     System.out.println("Please choose Toppings(sprinkles,cinnamon,cocoa,nuts)");
     toppings = inputData.nextLine();
