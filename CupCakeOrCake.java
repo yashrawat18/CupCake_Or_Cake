@@ -31,5 +31,7 @@ public class CupCakeOrCake{
     System.out.println("__________________________________________________");
     System.out.println(" 1      Cake          1          $15.00");
     System.out.println(" 2  Set of CupCakes   1          $10.00");
+    System.out.println("--------------------------------------------------");
+    System.out.println("Frodtings(vanila,chocolate,strawberry,coco");
   }
 }
