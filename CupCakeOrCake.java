@@ -2,21 +2,21 @@ import java.util.Scanner;
 
 public class CupCakeOrCake{
 
-	private static String name; //User's first name
+  private static String name; //User's first name
 	private static String itemOrder; // Item Ordered
 	private static int itemQuantity;//item Quantity
 	private static double billAmount;
 	private static String frostingType; // Frosting ordered
 	private static String fillingType; //Filling ordered
-	private static String toppings; //Toppings ordered
+	private static String toppingType; //Toppings ordered
 	private static String input; //User Input
-
-	private static double CakeCost =15.00; //Cost of cake
-	private static double CupCakeCost = 10.00; //CupCake Cost
+  private static String addOnList="";
+	private static double cakeCost =15.00; //Cost of cake
+	private static double cupCakeCost = 10.00; //CupCake Cost
 	private static final double TAX_RATE = .08;
 	private static double tax;
 	private static char ch='n';//choice from user whether to place order or not
-
+  private static String choice;
 	static Scanner inputData = new Scanner(System.in);
 
 	public static void main(String[] args)
@@ -48,7 +48,7 @@ public class CupCakeOrCake{
     	if(itemQuantity!=0){
     	addOns();
     	calculateAmount(itemOrder,itemQuantity);
-    	    	
+    	
     	System.out.println("");
 		  System.out.println("-----------------Your Order Summary:---------------");
 		  System.out.println("___________________________________________________");
@@ -56,7 +56,13 @@ public class CupCakeOrCake{
 		  System.out.println("___________________________________________________");		  
 		  System.out.println("		 "+itemOrder +"	  	 "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
-		  System.out.println("  Total:			$"+billAmount);
+      if(!addOnList.equals("")){
+        addOnList = addOnList.substring(0,addOnList.length()-2);
+        System.out.println("  AddOn List: "+addOnList);
+      }
+      System.out.println();
+      System.out.printf("  Tax                           $%.2f(TAX RATE = 0.08)\n",tax);      
+		  System.out.printf("  Total:			$%.2f\n",billAmount+tax);
       System.out.println();
 		  System.out.println("Thank you for placing the order!");
       System.out.println("Your order will arrive in 5 mins.");
@@ -84,7 +90,13 @@ public class CupCakeOrCake{
 		  System.out.println("___________________________________________________");		  
 		  System.out.println("		"+itemOrder +"	  "+itemQuantity);
 		  System.out.println("---------------------------------------------------");
-		  System.out.println("  Total:			 $"+billAmount);
+      if(!addOnList.equals("")){
+        addOnList = addOnList.substring(0,addOnList.length()-2);
+        System.out.println("  AddOn List: "+addOnList);
+      }
+      System.out.println();
+      System.out.printf("  Tax                            $%.2f(TAX RATE = 0.08)\n",tax);
+		  System.out.printf("  Total:			 $%.2f",billAmount+tax);
       System.out.println();
 		  System.out.println("Thank you for placing the order!");
       System.out.println("Your order will arrive in 5 mins.");
@@ -115,7 +127,13 @@ public class CupCakeOrCake{
       System.out.println("		 Cake             "+cakeQuantity);
       System.out.println("	    Set of CupCakes       "+cupCakesQuantity);
       System.out.println("---------------------------------------------------");
-      System.out.println("  Total:			 $"+billAmount);
+      if(!addOnList.equals("")){
+        addOnList = addOnList.substring(0,addOnList.length()-2);
+        System.out.println("  AddOn List: "+addOnList);
+      }
+      System.out.println();
+      System.out.printf("  Tax                            $%.2f(TAX RATE = 0.08)\n",tax);
+      System.out.printf("  Total:			 $%.2f\n",billAmount+tax);
       System.out.println();
       System.out.println("Thank you for placing the order!");
       System.out.println("Your order will arrive in 5 mins.");
@@ -138,7 +156,9 @@ public class CupCakeOrCake{
     	
     }
     
-    
+    addOnList="";
+    billAmount=0;
+    tax = 0;
     }while(ch!='n');
     
     
@@ -169,24 +189,59 @@ public class CupCakeOrCake{
   {
     System.out.println();
     System.out.println();
-  	System.out.println("Please choose Frostings(vanila,chocolate,strawberry,coco)");
-    frostingType = inputData.nextLine();
-    System.out.println("Please choose Fillings(mocha,mint,lemon,caramel,vanilla)"); 
-    fillingType = inputData.nextLine();
-    System.out.println("Please choose Toppings(sprinkles,cinnamon,cocoa,nuts)");
-    toppings = inputData.nextLine();
-  
+    System.out.println("Do you want Frosting?");
+    choice = inputData.nextLine();
+    if(choice.equalsIgnoreCase("yes"))
+  	{   System.out.println("Please choose a Frosting(Vanilla,Chocolate,Strawberry,Coco)");
+        frostingType = inputData.nextLine();
+        addItem(frostingType,2);
+        addOnList+=", ";
+    }
+    System.out.println("Do you want Filling?");
+    choice = inputData.nextLine();
+    if(choice.equalsIgnoreCase("yes"))
+    { 
+      System.out.println("Please choose a Filling(Mocha,Mint,Lemon,Caramel,Vanilla)"); 
+      fillingType = inputData.nextLine();
+      addItem(fillingType,3);
+      addOnList+=", ";
+    }
+    System.out.println("Do you want Topping?");
+    choice = inputData.nextLine();
+    if(choice.equalsIgnoreCase("yes"))
+    {
+      System.out.println("Please choose a Topping(Sprinkles,Cinnamon,Cocoa,Nuts)");
+      toppingType = inputData.nextLine();
+      addItem(toppingType,1);
+      addOnList+=", ";
+    }
   }
   private static void calculateAmount(String itemOrder,int itemQuantity)
   {
   	if(itemOrder.equalsIgnoreCase("Cake"))
-  		billAmount = itemQuantity * 15.00;
+  		billAmount+= itemQuantity * cakeCost;
   	else
-  		billAmount = itemQuantity * 10.00;
+  		billAmount += itemQuantity * cupCakeCost;
+
+    calculateTax(billAmount);
   
   }
   private static void calculateAmountBoth(int cakeQuantity,int cupCakesQuantity)
   {
-  	billAmount = cakeQuantity * 15.00+cupCakesQuantity*10.00;
+  	billAmount+= cakeQuantity * cakeCost+cupCakesQuantity*cupCakeCost;
+
+    calculateTax(billAmount);
+  }
+  private static void calculateTax(double billAmount)
+  {
+     tax = billAmount * TAX_RATE;
+    // billAmount+=tax;
+    
+   
+  }
+  private static void addItem(String itemType,double cost)
+  {
+      billAmount+=cost;
+      addOnList+=itemType;
   }
 }
